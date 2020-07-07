@@ -9,14 +9,14 @@
   </ItemGroup>
 
   <Target Name="Generate avro models" BeforeTargets="BeforeBuild">
-    <Exec Command="dotnet avrogen -s $(ProjectDir)models.avsc $(ProjectDir)Models --namespace dk.aau.avrogen.test:AvroGenTest.Models" />
+    <Exec Command="dotnet avrogen -s $(ProjectDir)models.avsc $(ProjectDir)Models --namespace my.avro.ns:my.csharp.ns" />
     <ItemGroup>
       <Compile Include="**/*$(DefaultLanguageSourceExtension)"
                Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
     </ItemGroup>
   </Target>
   <Target Name="Remove avro model directory" BeforeTargets="BeforeClean">
-    <RemoveDir Directories="$(ProjectDir)Models" />
+    <RemoveDir Directories="$(ProjectDir)Models/my" />
   </Target>
 
 </Project>
