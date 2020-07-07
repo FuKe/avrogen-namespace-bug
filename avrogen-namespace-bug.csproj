@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>avrogen_namespace_bug</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Apache.Avro" Version="1.10.0" />
+  </ItemGroup>
+
+  <Target Name="Generate avro models" BeforeTargets="BeforeBuild">
+    <Exec Command="dotnet avrogen -s $(ProjectDir)models.avsc $(ProjectDir)Models --namespace dk.aau.avrogen.test:AvroGenTest.Models" />
+    <ItemGroup>
+      <Compile Include="**/*$(DefaultLanguageSourceExtension)"
+               Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="Remove avro model directory" BeforeTargets="BeforeClean">
+    <RemoveDir Directories="$(ProjectDir)Models" />
+  </Target>
+
+</Project>

@@ -1,0 +1,13 @@
+{
+  "type" : "record",
+  "name" : "TestModel",
+  "namespace" : "dk.aau.avrogen.test",
+  "fields" : [ {
+    "name" : "eventType",
+    "type" : {
+      "type" : "enum",
+      "name" : "EventType",
+      "symbols" : [ "CREATE", "UPDATE", "DELETE" ]
+    }
+  } ]
+}
