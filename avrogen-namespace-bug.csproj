@@ -5,7 +5,7 @@
     <RootNamespace>avrogen_namespace_bug</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Apache.Avro" Version="1.10.0" />
+    <PackageReference Include="Apache.Avro" Version="1.11.0" />
   </ItemGroup>
 
   <Target Name="Generate avro models" BeforeTargets="BeforeBuild">
